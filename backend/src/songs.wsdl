@@ -1,0 +1,74 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:tns="http://example.com/songs.wsdl" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" name="songs" targetNamespace="http://example.com/songs.wsdl">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://example.com/songs.wsdl">
+            <element name="songs" type="xsd:string" />
+        </schema>
+    </types>
+    <message name="getSongsRequest" />
+    <message name="getSongsResponse">
+        <part name="songs" type="xsd:string" />
+    <portType name="songsPortType">
+        <operation name="getSongs">
+            <input message="tns:getSongsRequest" />
+            <output message="tns:getSongsResponse" />
+        </operation>
+        <operation name="addSong">
+            <input message="tns:addSongRequest" />
+            <output message="tns:addSongResponse" />
+        </operation>
+        <operation name="updateSong">
+            <input message="tns:updateSongRequest" />
+            <output message="tns:updateSongResponse" />
+        </operation>
+        <operation name="deleteSong">
+            <input message="tns:deleteSongRequest" />
+            <output message="tns:deleteSongResponse" />
+        </operation>
+    </portType>
+    <binding name="songsBinding" type="tns:songsPortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="getSongs">
+            <soap:operation soapAction="urn:getSongs" />
+            <input>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="addSong">
+            <soap:operation soapAction="urn:addSong" />
+            <input>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="updateSong">
+            <soap:operation soapAction="urn:updateSong" />
+            <input>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="deleteSong">
+            <soap:operation soapAction="urn:deleteSong" />
+            <input>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body use="encoded" namespace="http://example.com/songs.wsdl" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+    <service name="songs">
+        <port name="songsPort" binding="tns:songsBinding">
+            <soap:address location="http://localhost:3000/soap" />
+        </port>
+    </service>
+</definitions>
